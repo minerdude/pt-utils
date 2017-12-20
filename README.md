@@ -1,1 +1,1 @@
-# pt-utils
+## Simple ProfitTrailer Installer Script
