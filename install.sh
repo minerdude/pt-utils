@@ -7,7 +7,8 @@ sudo apt install default-jre nodejs nano unzip jq curl
 npm install pm2@latest -g
 rm -f ProfitTrailer.zip
 wget "$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases | jq -r '.[0].assets[].browser_download_url')" && \
-unzip ProfitTrailer.zip -d .
+unzip ProfitTrailer.zip
+#Aliases
 if grep -q "#alias-pt" .bash_aliases; then
 	echo -e "\nAliases already done."
 else
