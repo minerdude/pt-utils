@@ -22,7 +22,7 @@ sudo sed -i 's/Xms512m/Xms256m/' pm2-ProfitTrailer.json
 
 #Sysctl Conf
 if [  -f "/etc/sysctl.d/99-profittrailer.conf" ]; then
-	echo -e "\nSysconf já configurado anteriormente."
+	echo -e "\nSysconf already configured.\n"
 else
 	echo -e "\n#Protect Against TCP Time-Wait\nnet.ipv4.tcp_rfc1337 = 1\n" | sudo tee /etc/sysctl.d/99-profittrailer.conf
 	echo -e "#Latency\nnet.ipv4.tcp_low_latency = 1\nnet.ipv4.tcp_slow_start_after_idle = 0\n" | sudo tee -a /etc/sysctl.d/99-profittrailer.conf
