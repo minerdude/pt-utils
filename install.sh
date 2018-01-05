@@ -1,5 +1,10 @@
 #!/bin/bash
-echo -e "\nInstalling in 3 secs...\n\n"
+
+if [ -d "~/ProfitTrailer" ]; then
+	echo -e "\nProfitTrailer already installed!\n"
+	exit 0
+fi
+echo -e "\nInstalling in 3 secs...\nIf you want to stop it press CTRL+ C.\n\n"
 sleep 3
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 sudo apt update && sudo apt upgrade -y
