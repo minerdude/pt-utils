@@ -2,5 +2,5 @@
 
 **Install:**
 ```bash
-wget https://github.com/minerdude/pt-utils/raw/master/install.sh | bash install.sh
+wget https://github.com/minerdude/pt-utils/raw/master/install.sh && bash install.sh
 ```
