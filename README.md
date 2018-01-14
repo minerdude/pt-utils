@@ -4,4 +4,4 @@
 ```bash
 wget https://github.com/minerdude/pt-utils/raw/master/install.sh && bash install.sh
 ```
-*Tested on Ubuntu 16.04*
+*Tested on Ubuntu 16.04 and 17.10*
