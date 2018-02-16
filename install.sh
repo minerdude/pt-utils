@@ -34,20 +34,21 @@ ProgressBar 1 100
 sleep 1
 curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - > /dev/null 2>&1
 ProgressBar 5 100
-sudo apt update && sudo apt upgrade -y > /dev/null 2>&1
+sudo apt update > /dev/null 2>&1  && sudo apt upgrade -y > /dev/null 2>&1
 ProgressBar 10 100
-sudo apt install default-jre nodejs nano unzip jq curl > /dev/null 2>&1
+sudo apt install -y default-jre nodejs nano unzip jq curl > /dev/null 2>&1
 ProgressBar 15 100
 sudo npm install pm2@latest -g > /dev/null 2>&1
 ProgressBar 30 100
 rm -f ProfitTrailer.zip
-wget "$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases | jq -r '.[0].assets[].browser_download_url')" > /dev/null 2>&1 && \
+wget "$(curl -s https://api.github.com/repos/taniman/profit-trailer/releases | jq -r '.[0].assets[].browser_download_url')" > /dev/null 2>&1
 ProgressBar 55 100
 unzip ProfitTrailer.zip > /dev/null 2>&1
 rm -f ProfitTrailer.zip
 ProgressBar 70 100
 #Aliases
-if grep -q "#alias-pt" ~/.bash_aliases; then
+if [ -f "~/.bash_aliases" ] && [ grep -q "#alias-pt" ~/.bash_aliases ]
+then
 	$RED ; echo -e "\nAliases already created.\n" ; $RESET
 else
 	echo -e '#alias-pt\nalias update="sudo apt update"\nalias upgrade="sudo apt upgrade"\nalias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove"\nalias upgrades="apt list --upgradable"\nalias pmls="pm2 ls"\n'  | tee -a ~/.bash_aliases > /dev/null 2>&1
@@ -70,6 +71,7 @@ else
 	sudo sysctl -p /etc/sysctl.d/99-profittrailer.conf > /dev/null 2>&1
 fi
 ProgressBar 95 100
-$YELLOW ; $BOLD ; echo -e "\n\nFinished. Let's profit!\n\n" ; $RESET
+sleep 1
 ProgressBar 100 100
+$YELLOW ; $BOLD ; echo -e "\n\nFinished. Let's profit!\n\n" ; $RESET
 exit 0
